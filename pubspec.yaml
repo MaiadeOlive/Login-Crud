@@ -1,0 +1,101 @@
+name: target_sistemas_test_flutter_dev
+description: "Target Sistemas - Flutter developer test"
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.2.2 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  #Screen Adaptions
+  flutter_screenutil: ^5.9.0
+
+  #Icon
+  flutter_launcher_icons: ^0.13.1
+  cupertino_icons: ^1.0.2
+
+  #Firebase
+  firebase_core: ^2.24.0
+
+  #Shared Preferences
+  shared_preferences: ^2.2.2
+
+  #Smooth page indicator
+  smooth_page_indicator: ^1.1.0
+
+  #Login
+  flutter_login: ^4.2.1
+
+  #State management
+  
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+  #Splash screen
+  flutter_native_splash: ^2.3.6
+
+flutter_native_splash:
+  color: "#FFFFFF" #White
+  image: assets/images/logo.png
+
+  #Launcher Icon
+  flutter_launcher_icons: ^0.13.1
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/logo.png"
+  min_sdk_android: 21
+  web:
+    generate: true
+    image_path: "assets/images/logo.png"
+    background_color: "#hexcode"
+    theme_color: "#hexcode"
+  windows:
+    generate: true
+    image_path: "assets/images/logo.png"
+    icon_size: 48 # min:48, max:256, default: 48
+  macos:
+    generate: true
+    image_path: "assets/images/logo.png"
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - assets/images/logo.png
+    - assets/images/onboarding1.png
+    - assets/images/onboarding2.png
+    - assets/images/onboarding3.png
+
+  fonts:
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/Montserrat/static/Montserrat-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Montserrat/static/Montserrat-Medium.ttf
+          weight: 600
+        - asset: assets/fonts/Montserrat/static/Montserrat-Regular.ttf
+          weight: 500
+        - asset: assets/fonts/Montserrat/static/Montserrat-Light.ttf
+          weight: 400
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto/Roboto-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Roboto/Roboto-Medium.ttf
+          weight: 600
+        - asset: assets/fonts/Roboto/Roboto-Regular.ttf
+          weight: 500
+        - asset: assets/fonts/Roboto/Roboto-Light.ttf
+          weight: 400
