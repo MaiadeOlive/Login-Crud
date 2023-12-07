@@ -12,52 +12,44 @@ class PageThree extends StatefulWidget {
 class _PageThreeState extends State<PageThree> {
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.width;
-
-    return Container(
-      width: width,
-      height: height,
-      color: ThemeColors.turkeyred,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(
-              top: 8,
-              left: 22,
-              right: 22,
-              bottom: 4,
+    return Stack(
+      children: [
+        Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(
+                'assets/images/onboarding3.png',
+              ),
+              fit: BoxFit.fill,
             ),
-            child: Text(
-              'Além de realizar testes de usabilidade utilizando o Maze!',
-              style: ThemeText.paragraph16WhiteBold,
-              textAlign: TextAlign.start,
-            ),
+            color: Color.fromRGBO(255, 255, 255, 0.7),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 12),
-            child: Image.asset(
-              'assets/images/onboarding3.png',
-              height: MediaQuery.of(context).size.width * .7,
-              width: MediaQuery.of(context).size.width * .8,
+        ),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.2,
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(
-              top: 8,
-              left: 22,
-              right: 22,
-              bottom: 4,
+            Padding(
+              padding: const EdgeInsets.only(left: 22, right: 22),
+              child: Column(
+                children: [
+                  Text(
+                    '''Estou aberta a novos projetos! 🚀💻 
+                    
+#DesenvolvimentoMobile #Flutter #Android #Tecnologia #Colaboração #Mentoria
+''',
+                    style: ThemeText.paragraph16eirieBlackBold,
+                    textAlign: TextAlign.start,
+                  ),
+                ],
+              ),
             ),
-            child: Text(
-              'Estou disponível para agendar uma entrevista <3',
-              style: ThemeText.paragraph16WhiteBold,
-              textAlign: TextAlign.start,
-            ),
-          ),
-        ],
-      ),
+          ],
+        ),
+      ],
     );
   }
 }

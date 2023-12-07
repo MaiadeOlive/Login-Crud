@@ -7,40 +7,35 @@ class PageOne extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.width;
-
-    return Container(
-      width: width,
-      height: height,
-      color: ThemeColors.turkeyred,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            'Olá, eu sou a Maia!',
-            style: ThemeText.h3title20eirieBlack,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 12),
-            child: Image.asset(
+    return Stack(children: [
+      Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(
               'assets/images/onboarding1.png',
-              height: MediaQuery.of(context).size.width * .7,
-              width: MediaQuery.of(context).size.width * .8,
             ),
+            fit: BoxFit.fill,
+          ),
+          color: Color.fromRGBO(255, 255, 255, 0.7),
+        ),
+      ),
+      Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.2,
           ),
           Padding(
-            padding: const EdgeInsets.only(
-              top: 8,
-              left: 22,
-              right: 22,
-              bottom: 4,
-            ),
+            padding: const EdgeInsets.only(left: 22, right: 22),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '''Sou uma desenvolvedora de aplicativos móveis! \\o/''',
+                  'Olá! Eu sou a Maia!\n',
+                  style: ThemeText.h2title35black,
+                ),
+                Text(
+                  '''Desenvolvedora mobile e cientista da Informação. 📱✨''',
                   style: ThemeText.paragraph16eirieBlackBold,
                   textAlign: TextAlign.start,
                 ),
@@ -49,6 +44,6 @@ class PageOne extends StatelessWidget {
           ),
         ],
       ),
-    );
+    ]);
   }
 }

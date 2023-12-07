@@ -12,53 +12,44 @@ class PageTwo extends StatefulWidget {
 class _PageTwoState extends State<PageTwo> {
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.width;
+    return Stack(
+      children: [
+        Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(
+                'assets/images/onboarding2.png',
+              ),
+              fit: BoxFit.fill,
+            ),
+            color: Color.fromRGBO(255, 255, 255, 9),
+          ),
+        ),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.2,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 22, right: 22),
+              child: Column(
+                children: [
+                  Text(
+                    '''Como Mobile Developer, mergulho no universo do Android e Flutter, sempre buscando inovação. 
 
-    return Container(
-      width: width,
-      height: height,
-      color: ThemeColors.turkeyred,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(
-              top: 8,
-              left: 22,
-              right: 22,
-              bottom: 4,
+Acredito no poder da colaboração para crescer, seja pessoal ou profissionalmente. 
+''',
+                    style: ThemeText.paragraph16eirieBlackBold,
+                    textAlign: TextAlign.start,
+                  ),
+                ],
+              ),
             ),
-            child: Text(
-              '''
-Projeto os primeiros esboços, o protótipo navegável no figma''',
-              style: ThemeText.paragraph16WhiteBold,
-              textAlign: TextAlign.start,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 12),
-            child: Image.asset(
-              'assets/images/onboarding2.png',
-              height: MediaQuery.of(context).size.width * .7,
-              width: MediaQuery.of(context).size.width * .8,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(
-              top: 8,
-              left: 22,
-              right: 22,
-              bottom: 4,
-            ),
-            child: Text(
-              '''e o desenvolvimento, seja nativo ou multiplataforma!''',
-              style: ThemeText.paragraph16WhiteBold,
-              textAlign: TextAlign.start,
-            ),
-          ),
-        ],
-      ),
+          ],
+        ),
+      ],
     );
   }
 }

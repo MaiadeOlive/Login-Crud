@@ -1,4 +1,4 @@
- import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 abstract class ThemeText {
@@ -75,7 +75,6 @@ abstract class ThemeText {
     fontWeight: FontWeight.bold,
   );
 
-
   static TextStyle h2title35WhiteNormal = TextStyle(
     fontSize: ScreenUtil().setSp(35),
     letterSpacing: 1,
@@ -141,6 +140,14 @@ abstract class ThemeText {
     fontWeight: FontWeight.normal,
   );
 
+  static TextStyle h3title20WhiteBold = TextStyle(
+    fontSize: ScreenUtil().setSp(20),
+    letterSpacing: 1,
+    fontFamily: 'Montserrat',
+    color: ThemeColors.white,
+    fontWeight: FontWeight.bold,
+  );
+
   static TextStyle h3title20WhiteNormal = TextStyle(
     fontSize: ScreenUtil().setSp(20),
     letterSpacing: 1,
@@ -164,7 +171,6 @@ abstract class ThemeText {
     color: ThemeColors.black,
     fontWeight: FontWeight.normal,
   );
-
 
 //Paragraph 16
   static TextStyle paragraph16RedBold = TextStyle(
