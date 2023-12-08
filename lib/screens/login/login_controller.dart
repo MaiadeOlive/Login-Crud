@@ -1,9 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:target_sistemas_test_flutter_dev/domain/business/auth_service.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-import '../components/toast.dart';
 
 class LoginController {
   Future<void> launchPrivacyPolicy() async {
@@ -15,35 +10,7 @@ class LoginController {
     }
   }
 
-  Future<void> registration({
-    required BuildContext context,
-    required String login,
-    required String password,
-  }) async {
-    try {
-      if (validation(login, password)) {
-        await context.read<AuthService>().registrar(login, password);
-      }
-    } on AuthException catch (err) {
-      showToast(err.message);
-    }
-  }
-
-  Future<void> login({
-    required BuildContext context,
-    required String login,
-    required String password,
-  }) async {
-    try {
-      if (validation(login, password)) {
-        await context.read<AuthService>().login(login, password);
-      }
-    } on AuthException catch (err) {
-      showToast(err.message);
-    }
-  }
-
-  validation(login, password) {
+  bool validation(login, password) {
     if (login.isNotEmpty && password.isNotEmpty) {
       if (password.length >= 2 &&
           RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(login) &&
@@ -53,8 +20,7 @@ class LoginController {
           !password.endsWith(' ')) {
         return true;
       }
-    } else {
-      return false;
     }
+    return false;
   }
 }

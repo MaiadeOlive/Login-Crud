@@ -51,12 +51,10 @@ class CustomTextFormField extends StatelessWidget {
               return 'Email inválido';
             }
           } else if (keyboardType == TextInputType.text) {
-            // Você pode adicionar regras adicionais para textos aqui, se necessário
-          } else if (keyboardType == TextInputType.visiblePassword) {
             if (resposta.length < 2 ||
-                resposta.contains(RegExp(r'[^\w]')) ||
+                resposta.contains(RegExp(r'[!@#%^&*(),.?":{}|<>]')) ||
                 resposta.endsWith(' ')) {
-              return 'Senha inválida';
+              return 'A senha deve ter entre 2 e 20 caracteres,\nsem caracteres especiais.';
             }
           }
 

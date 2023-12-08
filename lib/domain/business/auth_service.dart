@@ -38,8 +38,11 @@ class AuthService extends ChangeNotifier {
         throw AuthException('A senha é muito fraca');
       } else if (e.code == 'email-already-in-use') {
         throw AuthException('Este email já está cadastrado!');
+      } else {
+        throw AuthException("Erro desconhecido: ${e.code}");
       }
     }
+    return null;
   }
 
   login(String email, String senha) async {
@@ -47,10 +50,16 @@ class AuthService extends ChangeNotifier {
       await _auth.signInWithEmailAndPassword(email: email, password: senha);
       _getUser();
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        throw AuthException('Email não encontrado. Cadastre-se!');
-      } else if (e.code == 'wrong-password') {
-        throw AuthException('Senha incorreta. Tente novamente!');
+      if (e.code == "user-not-found") {
+        throw AuthException("O e-mail não está cadastrado.");
+      } else if (e.code == "wrong-password") {
+        throw AuthException("Senha incorreta.");
+      } else if (e.code == 'INVALID_LOGIN_CREDENTIALS') {
+        throw AuthException('Email ou senha inválidos!');
+      } else if (e.code == 'too-many-requests') {
+        throw AuthException('Muitas tentativas, aguarde!');
+      } else {
+        throw AuthException("Erro desconhecido: ${e.code}");
       }
     }
   }
