@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:target_sistemas_test_flutter_dev/domain/business/auth_service.dart';
-import 'package:target_sistemas_test_flutter_dev/screens/login/login.dart';
+import 'package:target_sistemas_test_flutter_dev/domain/business/auth/auth_service.dart';
 
-import 'domain/business/auth_check.dart';
+import 'domain/business/auth/auth_check.dart';
 import 'firebase_options.dart';
-import 'screens/home/home.dart';
-import 'screens/onboarding/onboarding.dart';
+
+import 'presentation/home/home_page.dart';
+import 'presentation/login/login_page.dart';
+import 'presentation/onboarding/onboarding_page.dart';
 import 'utils/theme.dart';
 
 bool? isOnboardingCompleted;
