@@ -68,4 +68,8 @@ class AuthService extends ChangeNotifier {
     await _auth.signOut();
     _getUser();
   }
+
+  getUserEmail() {
+    return _auth.currentUser!.email;
+  }
 }

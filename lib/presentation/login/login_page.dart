@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:target_sistemas_test_flutter_dev/screens/login/login_controller.dart';
+import 'package:target_sistemas_test_flutter_dev/presentation/login/login_controller.dart';
+import 'package:toast/toast.dart';
 
-import '../../domain/business/auth_service.dart';
+import '../../domain/business/auth/auth_service.dart';
 import '../../utils/theme.dart';
 import '../components/custom_text_form_field.dart';
 import '../components/toast.dart';
@@ -36,6 +37,7 @@ class _LoginPageState extends State<LoginPage> {
     setFormAction(true);
     focusNode1 = FocusNode();
     focusNode2 = FocusNode();
+    ToastContext().init(context);
   }
 
   @override
@@ -64,50 +66,54 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ThemeColors.turkeyred,
-      body: Form(
-        key: _formKey,
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              buildLogo(),
-              const SizedBox(height: 40),
-              Text(
-                titulo,
-                style: ThemeText.h3title20WhiteBold,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Form(
+            key: _formKey,
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  buildLogo(),
+                  const SizedBox(height: 40),
+                  Text(
+                    titulo,
+                    style: ThemeText.h3title20WhiteBold,
+                  ),
+                  const SizedBox(height: 40),
+                  buildTextFormField(
+                    Icons.person,
+                    focusNode1,
+                    false,
+                    TextInputAction.next,
+                    'Usuário',
+                    loginController,
+                    TextInputType.emailAddress,
+                    'Escreva seu email corretamente',
+                    'Seu email deve ter menos de 20 caracteres',
+                  ),
+                  const SizedBox(height: 10),
+                  buildTextFormField(
+                    Icons.lock,
+                    focusNode2,
+                    true,
+                    TextInputAction.done,
+                    'Senha',
+                    passwordController,
+                    TextInputType.text,
+                    'Escreva sua senha corretamente',
+                    'Sua senha deve ter no mínimo 2 caracteres',
+                  ),
+                  const SizedBox(height: 90),
+                  buildElevatedButton(),
+                  const SizedBox(height: 30),
+                  buildToggleButton(),
+                  const SizedBox(height: 100),
+                  buildPrivacyPolicyLink(),
+                ],
               ),
-              const SizedBox(height: 40),
-              buildTextFormField(
-                Icons.person,
-                focusNode1,
-                false,
-                TextInputAction.next,
-                'Usuário',
-                loginController,
-                TextInputType.emailAddress,
-                'Escreva seu email corretamente',
-                'Seu email deve ter menos de 20 caracteres',
-              ),
-              const SizedBox(height: 10),
-              buildTextFormField(
-                Icons.lock,
-                focusNode2,
-                true,
-                TextInputAction.done,
-                'Senha',
-                passwordController,
-                TextInputType.text,
-                'Escreva sua senha corretamente',
-                'Sua senha deve ter no mínimo 2 caracteres',
-              ),
-              const SizedBox(height: 90),
-              buildElevatedButton(),
-              const SizedBox(height: 30),
-              buildToggleButton(),
-              const SizedBox(height: 100),
-              buildPrivacyPolicyLink(),
-            ],
+            ),
           ),
         ),
       ),
@@ -234,6 +240,9 @@ class _LoginPageState extends State<LoginPage> {
       await context
           .read<AuthService>()
           .login(loginController.text, passwordController.text);
+      if (authService.userAuth != null) {
+        Navigator.pushNamed(context, '/home');
+      }
     } on AuthException catch (err) {
       handleAuthException(err);
     } finally {
@@ -247,6 +256,9 @@ class _LoginPageState extends State<LoginPage> {
       await context
           .read<AuthService>()
           .registrar(loginController.text, passwordController.text);
+      if (authService.userAuth != null) {
+        Navigator.pushNamed(context, '/home');
+      }
     } on AuthException catch (err) {
       handleAuthException(err);
     } finally {

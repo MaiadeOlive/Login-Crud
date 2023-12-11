@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:target_sistemas_test_flutter_dev/domain/business/auth_service.dart';
-import 'package:target_sistemas_test_flutter_dev/screens/home/home.dart';
+import 'package:target_sistemas_test_flutter_dev/domain/business/auth/auth_service.dart';
 
-import '../../main.dart';
-import '../../screens/login/login.dart';
-import '../../screens/onboarding/onboarding.dart';
-import '../../utils/theme.dart';
+import '../../../main.dart';
+
+import '../../../presentation/home/home_page.dart';
+import '../../../presentation/login/login_page.dart';
+import '../../../presentation/onboarding/onboarding_page.dart';
+import '../../../utils/theme.dart';
 
 class AuthCheck extends StatefulWidget {
   const AuthCheck({Key? key}) : super(key: key);
