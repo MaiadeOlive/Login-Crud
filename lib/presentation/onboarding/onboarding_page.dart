@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:target_sistemas_test_flutter_dev/utils/theme.dart';
-import '../login/login.dart';
+import '../login/login_page.dart';
 import 'onboarding_controller.dart';
 import 'page_one.dart';
 import 'page_three.dart';

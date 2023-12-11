@@ -34,6 +34,8 @@ dependencies:
 
   #State management
   mobx: ^2.2.1
+  build_runner: ^2.0.8
+  mobx_codegen: ^2.0.0
 
   #Url launcher
   url_launcher: ^6.2.1
@@ -42,12 +44,13 @@ dependencies:
   provider: ^6.1.1  
 
   #Toast
-  fluttertoast: ^8.0.9
-
+  toast: ^0.3.0
+  flutter_mobx: ^2.2.0+1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  mockito: ^5.4.3
 
   flutter_lints: ^2.0.0
 
