@@ -323,6 +323,7 @@ abstract class ThemeText {
 abstract class ThemeColors {
   static const Color white = Colors.white;
   static const Color black = Colors.black;
+  static const Color green = Color.fromARGB(255, 4, 122, 4);
   static const Color eirieBlack = Color(0xFF1F1F1F);
   static const Color bloodRed = Color(0xFF6D0000);
   static const Color turkeyred = Color(0xFFB10000);
